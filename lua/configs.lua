@@ -1,14 +1,23 @@
 vim.g.mapleader = " "
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.smartcase = true
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
+vim.o.list = true
+vim.opt.signcolumn = "yes"
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.o.scrolloff = 10
+vim.o.undofile = true
+vim.o.showmode = false
 
---Configuracion por defecto
+vim.schedule(function()
+	vim.o.clipboard = 'unnamedplus'
+end)
+
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = false
-vim.opt.signcolumn = "yes"
 
 --Casos en que hay que usar espacios
 vim.api.nvim_create_autocmd("FileType", {
@@ -32,6 +41,10 @@ vim.opt.swapfile = false
 vim.opt.updatetime = 300
 vim.opt.breakindent = true
 
+vim.o.confirm = true
+
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
 vim.diagnostic.config(
 {
 	update_in_insert = true,
@@ -40,5 +53,7 @@ vim.diagnostic.config(
 	underline = true,
 	severity_sort = true
 })
+
+
 
 vim.loader.enable()
