@@ -54,6 +54,6 @@ vim.diagnostic.config(
 	severity_sort = true
 })
 
-
+vim.opt.shortmess:append('I')
 
 vim.loader.enable()
