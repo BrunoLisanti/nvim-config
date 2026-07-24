@@ -33,6 +33,7 @@ vim.pack.add({
   -- UI
   'https://github.com/stevearc/dressing.nvim',
   'https://github.com/echasnovski/mini.statusline',
+  'https://github.com/echasnovski/mini.icons',
 
   -- Especificos de lenguaje
   'https://github.com/nvim-flutter/flutter-tools.nvim',
@@ -52,10 +53,18 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+require('mini.icons').setup()
+local statusline = require 'mini.statusline'
+statusline.setup { use_icons = vim.g.have_nerd_font }
+---@diagnostic disable-next-line: duplicate-set-field
+statusline.section_location = function()
+  return '%2l:%-2v'
+end
+
+
 require('plugins.lsp')
 require('plugins.treesitter')
 require('plugins.telescope')
-require('plugins.mini-things')
 require('plugins.autocompletion')
 
 vim.cmd.colorscheme('vague')
